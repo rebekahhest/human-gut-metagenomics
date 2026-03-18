@@ -19,7 +19,11 @@ Taxonomic classification and species-level abundance estimation in metagenomic d
 
 #### Data Acquisition
 
+Shotgun metagenomic data from the gut microbiome of healthy Italian individuals was downloaded from the Sequence Read Archive (NCBI-SRA: SRP126540). Six samples were selected based on diet (omnivore n = 3; vegan n = 3). Raw sequencing reads were downloaded using the SRA Toolkit (v3.2.1) with commands `prefetch` and `fasterq-dump` to retrieve and convert SRA files to FASTQ	 format. Taxonomic classification was performed using the Kraken2 Core_nt reference database (`k2_core_nt_20251015.tar.gz`), which includes a comprehensive collection of nucleotide sequences derived from GenBank, RefSeq, Third Party Annotation (TPA), and Protein Data Bank (PDB) entries.
+
 #### Quality Control
+
+Initial quality assessment of raw sequencing reads was performed using FastQC (v0.12.1) and summarized with MultiQC (v1.13) using the commands `fastqc` and `multiqc`. Quality metrics including per-base sequence quality, GC content, and sequence length distribution were evaluated. Multiple peaks were observed in the Per Sequence GC Content plots, suggesting the presence of adapter contamination or mixed sequence composition. Therefore, adapter trimming and quality filtering were performed using Trimmomatic (v0.39) in paired-end mode (`PE`). Nextera adapter sequences were removed using `ILLUMINACLIP:NexteraPE-PE.fa:2:40:15`, compatible with the Nextera DNA library preparation kit used for NextSeq 500 sequencing. Additional quality filtering was performed using default parameters`LEADING:3`, `TRAILING:3`, `MINLEN:36`, and `SLIDINGWINDOW:4:20` to remove low-quality bases and short reads (Bolger, Lohse, & Usadel, 2014). Post-trimming sequence quality was reassessed using `fastqc` and `multiqc` to confirm improvement in read quality metrics.
 
 #### Taxonomic Classification
 
