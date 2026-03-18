@@ -27,9 +27,16 @@ Initial quality assessment of raw sequencing reads was performed using FastQC (v
 
 #### Taxonomic Classification
 
+Quality-filtered paired-end reads (`*_paired.fastq`) were taxonomically classified using Kraken2 (v 2.1.6) with the `--paired` option against the Core_nt reference database (Wood, Lu, & Langmead, 2019). A confidence threshold of `--confidence 0.15` was applied to reduce false positive taxonomic assignments. The option `--use-names` was included to report taxonomic classifications using scientific names rather than taxonomic identifiers. Memory mapping (`--memory-mapping`) was not used because the database was loaded directly into memory on a high-memory compute node.
+
 #### Abundance Estimation
 
+Species-level abundance estimates were generated using Bracken (v3.0), which refines Kraken2 taxonomic assignments through Bayesian re-estimation (Lu et al., 2017). Kraken2 report files were used as input, and abundance estimates were calculated using a read length parameter of `-r 150` bp and taxonomic level `-l S` to produce species-level abundance profiles.
+
 #### Data Pre-Processing
+
+Species-level abundance estimates were generated using Bracken (v3.0), which refines Kraken2 taxonomic assignments through Bayesian re-estimation (Lu et al., 2017). Kraken2 report files were used as input, and abundance estimates were calculated using a read length parameter of `-r 150` bp and taxonomic level `-l S` to produce species-level abundance profiles.
+
 
 #### Alpha Diversity Analysis (Within-samples)
 
