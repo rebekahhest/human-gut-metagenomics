@@ -37,6 +37,7 @@ Species-level abundance estimates were generated using Bracken (v3.0), which ref
 
 Species-level abundance estimates were generated using Bracken (v3.0), which refines Kraken2 taxonomic assignments through Bayesian re-estimation (Lu et al., 2017). Kraken2 report files were used as input, and abundance estimates were calculated using a read length parameter of `-r 150` bp and taxonomic level `-l S` to produce species-level abundance profiles.
 
+#### Relative Abundance Analysis
 
 #### Alpha Diversity Analysis (Within-samples)
 
