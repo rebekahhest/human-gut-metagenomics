@@ -39,11 +39,19 @@ Bracken-adjusted taxonomic reports were converted into BIOM format using `kraken
 
 #### Relative Abundance Analysis
 
+Relative taxonomic composition was evaluated at the phylum level by aggregating taxa using the `tax_glom` function in the phyloseq package (v.1.52.0). Relative abundances were visualized as stack bar plots per sample and grouped by dietary group to compare community composition. The top ten phylum by total abundance were retained and the remaining phylum were grouped into “Other” to improve interpretability. 
+
 #### Alpha Diversity Analysis (Within-samples)
+
+Alpha diversity was assessed using the Shannon and Simpson diversity indices, which capture both species richness and evenness within samples. Diversity metrics were calculated using the `estimate_richness` function in the phyloseq package (v.1.52.0). Diversity measures focused on rare taxa were excluded from this analysis since these estimates rely heavily on singletons but were absent following abundance re-estimation (Deng, Umbach, & Neufeld, 2024).
 
 #### Beta Diversity Analysis (Between-samples)
 
+Beta diversity was evaluated using Bray–Curtis dissimilarity, which incorporates differences in taxon abundances between samples. Ordination was performed using Principal Coordinates Analysis (PCoA) based on Bray–Curtis distances, implemented with the `ordinate` function in phyloseq. Differences in community composition between dietary groups were statistically assessed using permutational multivariate analysis of variance (PERMANOVA) with 999 permutations via the `adonis2` function in the vegan (2.7.3) package (Oksanen et al., 2026).
+
 #### Differential Abundance Analysis 
+
+To identify statistically significant differences in abundance of taxa between dietary groups, Analysis of Compositions of Microbes with Bias Correction (ANCOM-BC2) was conducted. This methodology accounts for sampling bias common in microbe studies while controlling the False Discovery Rate (FDR) (Lin & Peddada, 2020). The analysis was performed at the genus level (`tax_level = "Genus"`) using the `ancombc2` function from the ANCOMBC package (v.2.10.1), with died specified as the fixed effect (fix_formula = “Diet) and p-values were adjusted using the Holm Method (`p_adj_method = "holm"`). Taxa lacking genus-level classification were assigned to the lowest available taxonomic rank (e.g., family) to improve interpretability. Results were visualized for the top twenty taxa by absolute log-fold change. 
 
 ### Results
 
