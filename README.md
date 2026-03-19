@@ -35,7 +35,7 @@ Species-level abundance estimates were generated using Bracken (v3.0), which ref
 
 #### Data Pre-Processing
 
-Species-level abundance estimates were generated using Bracken (v3.0), which refines Kraken2 taxonomic assignments through Bayesian re-estimation (Lu et al., 2017). Kraken2 report files were used as input, and abundance estimates were calculated using a read length parameter of `-r 150` bp and taxonomic level `-l S` to produce species-level abundance profiles.
+Bracken-adjusted taxonomic reports were converted into BIOM format using `kraken-biom`, which aggregates taxonomic abundance estimates across samples into a standardized BIOM table (Daboub, 2016). The BIOM file was imported into R (v.2026.01.1+403) using the `biomformat` package and integrated with sample metadata using the phyloseq package (v.1.52.0) to construct a phyloseq object containing taxonomic abundance data and associated sample metadata (McMurdie & Holmes, 2012). The metadata file (`metadata.tsv`) was adapted from the SRA metadata and included dietary classification (omnivore or vegan) and location (city) for each sample. This phyloseq object was used for downstream taxonomic composition summaries and diversity analyses. Rarefaction curves were generated to assess sampling effort. 
 
 #### Relative Abundance Analysis
 
