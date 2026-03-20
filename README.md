@@ -56,6 +56,17 @@ To identify statistically significant differences in abundance of taxa between d
 
 ### Results
 
+#### Taxonomic Composition
+
+Across all samples, the gut microbiome was dominated by Bacteriodota and Bacillota, which account for the majority of relative abundance together in both dietary groups (Figure 1). Omnivore samples showed greater variability in phylum-level composition and a more balanced distribution of taxa, with one sample (SRR8146936) exhibiting a particularly high proportion of Bacillota. In contrast, vegan samples were more consistent in relative abundances among samples, except for one sample (SRR814951) that was strongly represented by Bactillota. Minor contributions from other phylum, including Uroviricota and Mycoplasmatota in lower relative abundance were observed across all samples.
+<br><br>
+However, at the genus level, the differential abundance analysis using ANCOM-BC2 identified no taxa that were significantly different between dietary groups after multiple testing correction via the Holm-method (q > 0.05). Despite the lack of statistically significant results, several genera exhibited notable differences in log fold change between groups (Figure 2). Genera such as _Romboutsia_, _Parvimonas_, and _Anaerobutyricum_ showed higher relative abundance in vegan samples, whereas taxa including _Fusobacterium_ and _Campylobacter_ were more abundant in omnivore samples. The top twenty genera exhibiting the largest log-fold change primarily represented the phylum Bactillota followed by Bacteroida. 
+
+#### Microbial Community Structure
+Alpha diversity was assessed using Shannon diversity in which there was no significant different between omnivore samples (mean ~ 3.18) and vegan samples (mean ~ 2.92) when evaluated using a Wilcox rank sum test (p = 0.7) (Figure 3). Similarly, Simpson diversity found no significant difference between dietary groups, omnivores (mean ~ 0.85) and vegans (mean ~ 0.79) using a Wilcox test (p = 0.7) (Figure 4). Both metrics displayed overlapping distributions, indicating comparable within-group diversity across diets (Figure 5). Between both diversity measures, the omnivore samples contained both high and low alpha diversity estimates, whereas the vegan samples were more consistent across samples.
+<br><br>
+The beta diversity measured using Bray-Curtis dissimilarity and PCoA revealed no distinct clustering of samples by group despite diet explaining 76.8% of the variation (PC1 = 51% and PC2 = 25.8%) (Figure 6). Along the first principal component, the samples were interspersed but the second principal component showed slight separation of the dietary groups. The PERMANOVA supported this showing that diet explained only 18.5% of the observed variation with no statistically significant difference between groups (R<sup>2</sup> = 0.185, p = 0.5). Together, these results suggest substantial overlap in composition exists between the groups and that diet was not a strong determinant of microbial community structure.
+
 ### Discussion
 
 ## References
