@@ -8,9 +8,6 @@ library(forcats)
 library(vegan)
 library(ANCOMBC)
 
-packageVersion("ANCOMBC")
-
-
 # Read the BIOM"phyloseq"# Read the BIOM file
 biom_data <- read_biom("data/bracken.biom")
 ps <- import_biom(biom_data)
@@ -43,7 +40,6 @@ colnames(tax_table(ps)) <- c(
 
 # Remove prefixes (eg. "p_"phylum)
 ps@tax_table <- substring(ps@tax_table, 4)
-View(ps@tax_table)
 
 # Rarefaction
 otu_table <- as.data.frame(t(otu_table(ps)))
@@ -81,6 +77,20 @@ alpha_div <- estimate_richness(ps, measures = c("Shannon", "Simpson"))
 # Add Samples and Diet to alpha diversity df
 alpha_div$Sample <- rownames(alpha_div)
 alpha_div$Diet <- sample_data(ps)$Diet
+
+# Calculate average Shannon diversity 
+mean_Shannon <- alpha_div %>%
+  group_by(Diet) %>%
+  summarise(mean(Shannon))
+
+# Calculate average Simpson diversity 
+mean_Simpson <- alpha_div %>%
+  group_by(Diet) %>%
+  summarise(mean(Simpson))
+
+# Test if mean alpha diversity differs between dietary groups
+wilcox.test(Shannon ~ Diet, data = alpha_div)
+wilcox.test(Simpson ~ Diet, data = alpha_div)
 
 # Plot Shannon Diversity
 ggplot(alpha_div, aes(x = Sample, y = Shannon)) +
@@ -130,8 +140,13 @@ ancombc.out$res$taxon
 ancombc.sig <- subset(ancombc.out$res, q_DietVegan < 0.05)
 ancombc.sig # zero results
 
+ # Extract ANCOMBC results
+res_df <- ancombc.out$res                               
+
+# Create levels of higher taxa                          
 levels <- c("Phylum", "Class", "Order", "Family")
 
+# Clean taxa names                                  
 res_df$taxon_clean <- sapply(res_df$taxon, function(x) {
   if (!grepl("_", x)) {
     return(paste0("Genus: ", x))
