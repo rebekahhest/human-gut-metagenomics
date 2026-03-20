@@ -43,7 +43,8 @@ Relative taxonomic composition was evaluated at the phylum level by aggregating 
 
 #### Alpha Diversity Analysis (Within-samples)
 
-Alpha diversity was assessed using the Shannon and Simpson diversity indices, which capture both species richness and evenness within samples. Diversity metrics were calculated using the `estimate_richness` function in the phyloseq package (v.1.52.0). Diversity measures focused on rare taxa were excluded from this analysis since these estimates rely heavily on singletons but were absent following abundance re-estimation (Deng, Umbach, & Neufeld, 2024).
+Alpha diversity was assessed using the Shannon and Simpson diversity indices, which capture both species richness and evenness within samples. Diversity metrics were calculated using the `estimate_richness` function in the phyloseq package (v.1.52.0). Diversity measures focused on rare taxa were excluded from this analysis since these estimates rely heavily on singletons but were absent following abundance re-estimation (Deng, Umbach, & Neufeld, 2024). Within-group differences were tested using a Wilcox rank-sum test for both Shannon and Simpson indices.
+
 
 #### Beta Diversity Analysis (Between-samples)
 
