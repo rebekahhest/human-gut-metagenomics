@@ -6,7 +6,7 @@ Taxonomic classification, community comparison and differential abundance analys
 
 ## Assignment 3
 
-This repository contains Assignment 3, a study to explore and compare taxonomic communities between microbial samples from shotgun metagenomics data of human gut microbiomes with different habitual diets including vegans, vegetarians and omnivores.
+This repository contains Assignment 3, a study to explore and compare taxonomic communities between microbial samples from shotgun metagenomics data of human gut microbiomes with different habitual diets including vegans and omnivores.
 
 ### Introduction
 
