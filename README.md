@@ -49,7 +49,6 @@ Relative taxonomic composition was evaluated at the phylum level by aggregating 
 
 Alpha diversity was assessed using the Shannon and Simpson diversity indices, which capture both species richness and evenness within samples. Diversity metrics were calculated using the `estimate_richness` function in the phyloseq package (v.1.52.0). Diversity measures focused on rare taxa were excluded from this analysis since these estimates rely heavily on singletons but were absent following abundance re-estimation (Deng, Umbach, & Neufeld, 2024). Within-group differences were tested using a Wilcox rank-sum test for both Shannon and Simpson indices.
 
-
 #### Beta Diversity Analysis (Between-samples)
 
 Beta diversity was evaluated using Bray–Curtis dissimilarity, which incorporates differences in taxon abundances between samples. Ordination was performed using Principal Coordinates Analysis (PCoA) based on Bray–Curtis distances, implemented with the `ordinate` function in phyloseq. Differences in community composition between dietary groups were statistically assessed using permutational multivariate analysis of variance (PERMANOVA) with 999 permutations via the `adonis2` function in the vegan (2.7.3) package (Oksanen et al., 2026).
@@ -64,12 +63,31 @@ To identify statistically significant differences in abundance of taxa between d
 
 Across all samples, the gut microbiome was dominated by Bacteriodota and Bacillota, which account for the majority of relative abundance together in both dietary groups (Figure 1). Omnivore samples showed greater variability in phylum-level composition and a more balanced distribution of taxa, with one sample (SRR8146936) exhibiting a particularly high proportion of Bacillota. In contrast, vegan samples were more consistent in relative abundances among samples, except for one sample (SRR814951) that was strongly represented by Bactillota. Minor contributions from other phylum, including Uroviricota and Mycoplasmatota in lower relative abundance were observed across all samples.
 <br><br>
+
+![Figure 1](figures/01_Relative_Abundance.png)<br>
+**Figure 1. Stacked bar plots of relative abundance by phylum for six microbiome samples, grouped by diet (omnivore and vegan). Top 10 phyla by sum abundance are displayed and remaining 25 phylum are collapsed into one group labelled "Other".**
+
 However, at the genus level, the differential abundance analysis using ANCOM-BC2 identified no taxa that were significantly different between dietary groups after multiple testing correction via the Holm-method (q > 0.05). Despite the lack of statistically significant results, several genera exhibited notable differences in log fold change between groups (Figure 2). Genera such as _Romboutsia_, _Parvimonas_, and _Anaerobutyricum_ showed higher relative abundance in vegan samples, whereas taxa including _Fusobacterium_ and _Campylobacter_ were more abundant in omnivore samples. The top twenty genera exhibiting the largest log-fold change primarily represented the phylum Bactillota followed by Bacteroida. 
+
+![Figure 2](figures/02_Differential_Abundance.png)<br>
+**Figure 1. Log fold changes for the top 20 genera of 168 total genera comparing vegan and omnivore samples. Error bars represent uncertainty, and the red line indicates no difference. No genera were significantly different (q < 0.05).**
 
 #### Microbial Community Structure
 Alpha diversity was assessed using Shannon diversity in which there was no significant different between omnivore samples (mean ~ 3.18) and vegan samples (mean ~ 2.92) when evaluated using a Wilcox rank sum test (p = 0.7) (Figure 3). Similarly, Simpson diversity found no significant difference between dietary groups, omnivores (mean ~ 0.85) and vegans (mean ~ 0.79) using a Wilcox test (p = 0.7) (Figure 4). Both metrics displayed overlapping distributions, indicating comparable within-group diversity across diets (Figure 5). Between both diversity measures, the omnivore samples contained both high and low alpha diversity estimates, whereas the vegan samples were more consistent across samples.
 <br><br>
+![Figure 3](figures/03_Shannon_Diversity.png)<br>
+**Figure 3. Shannon diversity indices for individual samples grouped by diet: omnivore (mean ~ 3.18), and vegan (mean ~ 2.92). No statistical difference was identified between the groups (p = 0.7).**
+<br><br>
+![Figure 4](figures/04_Simpson_Diversity.png)<br>
+**Figure 4. Simspon diversity indices for individual samples grouped by diet: omnivore (mean ~ 0.85), and vegan (mean ~ 0.79). No statistical difference was identified between the groups (p = 0.7).**
+<br><br>
+![Figure 5](figures/05_Alpha_Diversity_Combined.png)<br>
+**Figure 5. Comparison of alpha diversity metrics (Shannon and Simpson) between omnivore and vegan groups.**
+
 The beta diversity measured using Bray-Curtis dissimilarity and PCoA revealed no distinct clustering of samples by group despite diet explaining 76.8% of the variation (PC1 = 51% and PC2 = 25.8%) (Figure 6). Along the first principal component, the samples were interspersed but the second principal component showed slight separation of the dietary groups. The PERMANOVA supported this showing that diet explained only 18.5% of the observed variation with no statistically significant difference between groups (R<sup>2</sup> = 0.185, p = 0.5). Together, these results suggest substantial overlap in composition exists between the groups and that diet was not a strong determinant of microbial community structure.
+<br><br>
+![Figure 6](figures/06_PCoA_Bray-Curtis.png)<br>
+**Figure 6. Principal coordinates analysis (PCoA) based on Bray–Curtis dissimilarity showing beta diversity between omnivore and vegan microbiome samples. Axes indicate the percentage of variance explained (PC1 = 51%, PC2 = 25.8%). Partial separation between groups is observed, though overlap indicates shared community structure.**
 
 ### Discussion
 
